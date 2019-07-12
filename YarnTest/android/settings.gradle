@@ -1,0 +1,3 @@
+rootProject.name = 'YarnTest'
+
+include ':app'
