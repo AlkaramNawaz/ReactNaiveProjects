@@ -1,32 +1,27 @@
 import React from "react";
-import {
-  createSwitchNavigator,
-  createAppContainer,
-  createStackNavigator
-} from "react-navigation";
-import Home from "../screens/Home";
-import Login from "../screens/Login";
+import { createAppContainer } from "react-navigation";
+import AppNavigator from "./AppNavigator";
 
-//Switch Navigator
-const SwitchNavigator = createSwitchNavigator(
-  {
-    Login: Login,
-    Home: Home
-  },
-  {
-    initialRouteName: "Login"
-  }
-);
+export default createAppContainer(AppNavigator);
 
-//Stack Navigator
-const StackNavigator = createStackNavigator(
-  {
-    Login: Login,
-    Home: Home
-  },
-  {
-    initialRouteName: "Login"
-  }
-);
+// //Switch Navigator
+// const SwitchNavigator = createSwitchNavigator(
+//   {
+//     Login: Login,
+//     Home: Home
+//   },
+//   {
+//     initialRouteName: "Login"
+//   }
+// );
 
-export default createAppContainer(StackNavigator);
+// //Stack Navigator
+// const StackNavigator = createStackNavigator(
+//   {
+//     Login: Login,
+//     Home: Home
+//   },
+//   {
+//     initialRouteName: "Login"
+//   }
+// );
