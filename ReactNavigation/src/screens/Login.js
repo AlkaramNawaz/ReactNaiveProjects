@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TextInput
 } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 
 class Login extends React.Component {
   static navigationOptions = {
@@ -19,16 +20,26 @@ class Login extends React.Component {
     formValid: false
   };
 
-  validateData = () => {
-    // const { username, password, formValid } = this.state;
-    // //alert(username, password);
-    // if (username !== "" && password !== "") {
-    //   this.setState({ formValid: !this.state.formValid });
-    //   alert(formValid);
-    // } else {
-    //   alert("out");
-    //   // this.toggleFormValid();
-    // }
+  validateData = async () => {
+    const { username, password } = this.state;
+    try {
+      const usernameDB = await AsyncStorage.getItem("username");
+      const passwordDB = await AsyncStorage.getItem("password");
+      const phone_numberDB = await AsyncStorage.getItem("phone_number");
+      const countryDB = await AsyncStorage.getItem("country");
+      if (usernameDB != null && passwordDB !== null) {
+        //We have data
+        if (username === usernameDB && password === passwordDB) {
+          this.props.navigation.navigate("Home");
+        } else {  
+          alert("Please enter values again");
+        }
+      } else {
+        console.warn("Something went wrong");
+      }
+    } catch (err) {
+      alert(err);
+    }
   };
 
   render() {
@@ -53,7 +64,6 @@ class Login extends React.Component {
             this.setState({ password: text });
           }}
         />
-
         <TouchableOpacity
           style={styles.loginButton}
           onPress={() => {
@@ -61,6 +71,17 @@ class Login extends React.Component {
           }}
         >
           <Text style={{ color: "white", fontSize: 16 }}>Get Started</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{ top: 30 }}
+          onPress={() => {
+            navigate("Signup");
+          }}
+        >
+          <Text style={{ color: "black", fontSize: 16 }}>
+            Not have an account ? Signup
+          </Text>
         </TouchableOpacity>
       </View>
     );
