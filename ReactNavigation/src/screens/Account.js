@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-class Home extends React.Component {
+class Account extends React.Component {
   static navigationOptions = {
     header: null
   };
@@ -9,10 +9,10 @@ class Home extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
+        <Text>Accont Screen</Text>
       </View>
     );
   }
 }
 
-export default Home;
+export default Account;
