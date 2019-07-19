@@ -1,0 +1,29 @@
+		//Installing Reactnative Cli
+npm install -g react-native-cli	
+	
+		//Create Project Command
+react-native init ProjectName --version 0.59.9
+
+		//Run Project Command
+react-native run-android ( for android )
+react-native run-ios ( for ios)
+react-native start
+
+		//Adding Libraries
+yarn add libraryname   (for example react-navigation)   
+	Or
+npm install libraryname
+
+		//Gradle Clear Cache
+You're in your project directory . now run following command
+cd android && ./gradlew clean
+
+		//Open VSCode from Gitbash
+ ( in your project directory gitbash )  run "code ."
+
+		//SDK License Issue
+Open Android Studio ,click on Open Project , --> goto your project and open android directory in 
+android studio and then build .  never forget to Update when promt is appeared.
+
+		//Instructions
+Make your project name  always like "AwesomeProject"	
