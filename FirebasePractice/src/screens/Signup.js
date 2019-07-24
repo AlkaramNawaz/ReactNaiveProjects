@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   TextInput
 } from "react-native";
+import { ShowLoading } from "../components/ShowLoading";
+import DBHandler from "../api/DBHandler";
 
 class Signup extends React.Component {
   static navigationOptions = {
@@ -17,17 +19,49 @@ class Signup extends React.Component {
     email: "",
     password: "",
     phone_number: "",
-    country: ""
+    country: "",
+    loading: false
   };
 
-  storeUserInfo = async () => {
+  toggleLoading = () => {
+    this.setState({ loading: !this.state.loading });
+  };
+
+  signUp = () => {
+    this.toggleLoading();
     const { email, password, phone_number, country } = this.state;
+    if (
+      email === "" ||
+      password === "" ||
+      phone_number === "" ||
+      country === ""
+    ) {
+      this.toggleLoading();
+      console.warn("Please fill the form");
+    } else {
+      DBHandler.auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          //Do what you want
+          this.toggleLoading();
+          this.props.navigation.navigate("Login");
+        })
+        .catch(err => {
+          //handle errors
+          this.toggleLoading();
+          alert(err);
+        });
+    }
   };
 
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.appContainer}>
+        <ShowLoading
+          visible={this.state.loading}
+          loadingMsg={"Signing up..."}
+        />
         <Text style={styles.loginText}>Signup</Text>
         <TextInput
           style={styles.textInputStyle}
@@ -65,7 +99,7 @@ class Signup extends React.Component {
         <TouchableOpacity
           style={styles.loginButton}
           onPress={() => {
-            this.storeUserInfo();
+            this.signUp();
           }}
         >
           <Text style={{ color: "white", fontSize: 16 }}>Get Started</Text>
