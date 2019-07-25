@@ -43,6 +43,7 @@ class Signup extends React.Component {
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
           //Do what you want
+          
           this.toggleLoading();
           this.props.navigation.navigate("Login");
         })

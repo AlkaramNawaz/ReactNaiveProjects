@@ -43,6 +43,7 @@ const AccountNavigator = createStackNavigator(
 );
 
 const BottomTabs = createBottomTabNavigator(
+  //routes
   {
     Home: {
       screen: HomeNavigator,
@@ -73,13 +74,15 @@ const BottomTabs = createBottomTabNavigator(
       }
     }
   },
+  //route config
   {
     initialRouteName: "Home",
     tabBarOptions: {
       labelStyle: {
         fontSize: 14
       }
-    }
+    },
+   
   }
 );
 

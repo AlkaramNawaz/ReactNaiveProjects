@@ -28,7 +28,7 @@ class Signup extends React.Component {
       await AsyncStorage.setItem("password", password);
       await AsyncStorage.setItem("phone_number", phone_number);
       await AsyncStorage.setItem("country", country);
-      console.warn("information saved");
+     // console.warn("information saved");
       this.setState({
         username: "",
         password: "",

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "861948745777",
+    "firebase_url": "https://reactnavigation-1d605.firebaseio.com",
+    "project_id": "reactnavigation-1d605",
+    "storage_bucket": "reactnavigation-1d605.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861948745777:android:0ebdf2343979a88b",
+        "android_client_info": {
+          "package_name": "com.reactnavigation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861948745777-9uubkpclh977oti7d9uv729pl9e1qsn5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reactnavigation",
+            "certificate_hash": "be0ccc255ee6c9a19e951ad50e8a29034d091404"
+          }
+        },
+        {
+          "client_id": "861948745777-tlec9nohhdd7c3cdc7e6ueq9f7mng1o3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvVqVXXtM5MAm0pqg2880ph05hHgPs6po"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861948745777-tlec9nohhdd7c3cdc7e6ueq9f7mng1o3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,9 @@
 import React from "react";
-import { createSwitchNavigator, createStackNavigator } from "react-navigation";
+import {
+  createSwitchNavigator,
+  createStackNavigator,
+  createDrawerNavigator
+} from "react-navigation";
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import BottomTabs from "../navigation/BottomTabs";
@@ -26,6 +30,7 @@ const App = createStackNavigator(
 App.navigationOptions = {
   header: null
 };
+
 
 export default createSwitchNavigator(
   {

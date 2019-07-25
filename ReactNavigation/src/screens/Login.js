@@ -31,7 +31,7 @@ class Login extends React.Component {
         //We have data
         if (username === usernameDB && password === passwordDB) {
           this.props.navigation.navigate("Home");
-        } else {  
+        } else {
           alert("Please enter values again");
         }
       } else {

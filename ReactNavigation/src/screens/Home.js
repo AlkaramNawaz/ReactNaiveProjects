@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { View, Text } from "react-native";
 
-class Home extends React.Component {
+class Home extends Component {
   static navigationOptions = {
     header: null
   };
