@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, SectionList } from "react-native";
 import DBHandler from "../api/DBHandler";
 
 class Home extends Component {
@@ -31,9 +31,25 @@ class Home extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
-        <Button title={"Save Data"} onPress={() => this.saveDataToDB()} />
+      <View style={{ flex: 1, padding: 20 }}>
+        {/* <Text>Home Screen</Text>
+        <Button title={"Save Data"} onPress={() => this.saveDataToDB()} /> */}
+        <SectionList
+          sections={[
+            { title: "A", data: ["Ali", "Alkaram", "Aslam"] },
+            { title: "B", data: ["Bilal", "Alkaram", "Aslam"] },
+            { title: "C", data: ["Ali", "Alkaram", "Aslam"] },
+            { title: "D", data: ["Ali", "Alkaram", "Aslam"] }
+          ]}
+          renderItem={({item,index}) => {
+            return(
+              <Text key={index}>Override{item}</Text>
+            )
+          }}
+          renderSectionHeader={({section:{title}}) => (
+            <Text style={{fontWeight: 'bold'}}>{title}</Text>
+          )}
+        />
       </View>
     );
   }
