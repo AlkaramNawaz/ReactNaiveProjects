@@ -8,7 +8,9 @@ import {
   TextInput
 } from "react-native";
 import { ShowLoading } from "../components/ShowLoading";
-import DBHandler from "../api/DBHandler";
+import axios from "axios";
+import { baseUrl } from "../api/DBHandler";
+import qs from "qs";
 
 class Login extends React.Component {
   static navigationOptions = {
@@ -16,7 +18,7 @@ class Login extends React.Component {
   };
 
   state = {
-    email: "",
+    username: "",
     password: "",
     formValid: false,
     loading: false
@@ -26,24 +28,21 @@ class Login extends React.Component {
     this.setState({ loading: !this.state.loading });
   };
 
-  loginUser = () => {
+  loginUser = async () => {
     this.toggleLoading();
-    const { email, password } = this.state;
+    const { username, password } = this.state;
 
-    if (email === "" || password === "") {
+    if (username === "" || password === "") {
       this.toggleLoading();
       console.warn("Please fill the form");
     } else {
-      DBHandler.auth
-        .signInWithEmailAndPassword(email, password)
-        .then(() => {
-          this.toggleLoading();
-          this.props.navigation.navigate("App");
-        })
-        .catch(err => {
-          this.toggleLoading();
-          alert(err);
-        });
+      const params = {
+        username: this.state.username,
+        password: this.state.password
+      };
+
+      const res = await axios.post(baseUrl + "login.php", qs.stringify(params));
+      console.warn(res.data);
     }
   };
 
@@ -55,10 +54,10 @@ class Login extends React.Component {
         <Text style={styles.loginText}>Login</Text>
         <TextInput
           style={styles.textInputStyle}
-          placeholder="Email"
-          value={this.state.email}
+          placeholder="username"
+          value={this.state.username}
           onChangeText={text => {
-            this.setState({ email: text });
+            this.setState({ username: text });
           }}
         />
         <TextInput

@@ -10,6 +10,7 @@ import {
 import { ShowLoading } from "../components/ShowLoading";
 import axios from "axios";
 import { baseUrl } from "../api/DBHandler";
+import qs from "qs";
 
 class Signup extends React.Component {
   static navigationOptions = {
@@ -34,7 +35,6 @@ class Signup extends React.Component {
       this.toggleLoading();
       console.warn("Please fill the form");
     } else {
-  
       const params = {
         name: this.state.name,
         username: this.state.username,
@@ -43,7 +43,7 @@ class Signup extends React.Component {
 
       const res = await axios.post(
         baseUrl + "signup.php",
-        JSON.stringify(params)
+        qs.stringify(params)
       );
       console.warn(res.data);
     }
